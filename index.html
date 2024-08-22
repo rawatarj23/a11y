@@ -9,7 +9,7 @@
   <body>
     <section class="container">
       <button type="button" class="btn btn-secondary btn-cancel btn-sm my-2 cancel-autocaptureBtn" aria-label="Close scan button, Cancel the Face capture" data-bs-toggle="modal" data-bs-target="#cancelEnrollment" tabindex="0" onclick="cancelFacecapture()">Close scan</button>
-      <div class="modal fade" id="cancelEnrollment" tabindex="-1" role="document" data-bs-backdrop="static" aria-hidden="true" data-bs-keyboard="false">
+      <div class="modal fade" id="cancelEnrollment" tabindex="-1" role="dialog" data-bs-backdrop="static" aria-hidden="true" data-bs-keyboard="false">
         <div class="modal-dialog custom-modal modal-dialog-centered modal-md">
           <div class="modal-content" >
             <div class="modal-body">
@@ -17,8 +17,8 @@
               <p class="cancel-message" id="cancelEnrollmentMsg">Are you sure you want to cancel this verification?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification" tabindex="0">No</button>
-              <button type="button" id="yes" class="btn btn-secondary ms-3" aria-label="Yes, Cancel Verification" tabindex="0">Yes</button>
+              <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification" tabindex="0" autofocus>No</button>
+              <button type="button" id="yes" class="btn btn-secondary ms-3" aria-label="Yes, Cancel Verification" tabindex="0" autofocus>Yes</button>
             </div>
           </div>
         </div>
