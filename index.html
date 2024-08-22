@@ -10,13 +10,13 @@
     <section class="container">
       <button type="button" class="btn btn-secondary btn-cancel btn-sm cancel-autocaptureBtn" aria-label="Close scan button, Cancel the Face capture" data-bs-toggle="modal" data-bs-target="#cancelEnrollment" tabindex="0">Close scan</button>
 
-      <div class="modal fade" id="cancelEnrollment" tabindex="-1" aria-modal="true" role="dialog" aria-labelledby="cancelEnrollmentTitle">
+      <div class="modal fade" id="cancelEnrollment" tabindex="-1" aria-modal="true" role="dialog" aria-label="Are you sure you want to cancel this verification?">
         <div class="modal-dialog custom-modal modal-dialog-centered modal-md">
           <div class="modal-content">
             <div class="modal-body">
               <span class="icon alert-icon"></span>
-              <p class="modal-title hide invisible" id="cancelEnrollmentTitle">Confirmation modal</p>
-              <p class="cancel-message" id="cancelEnrollmentMsg">Are you sure you want to cancel this verification?</p>
+              <p class="modal-title hide invisible" id="cancelEnrollmentTitle" role="presentation">Confirmation modal</p>
+              <p class="cancel-message" id="cancelEnrollmentMsg" aria-hidden="true">Are you sure you want to cancel this verification?</p>
             </div>
             <div class="modal-footer">
               <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification" tabindex="0">No</button>
