@@ -29,7 +29,10 @@
   <script>
     const modalElement = document.getElementById('cancelEnrollment')
 
-    modalElement.addEventListener('shown.bs.modal', event => event.target.setAttribute('role', 'presentation'))
+    modalElement.addEventListener('shown.bs.modal', event => {
+        event.target.setAttribute('role', 'presentation');
+        console.log(event.target.getAttribute('role'));
+    })
   </script>
 </body>
-</html>
+</html>js
