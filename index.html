@@ -32,12 +32,10 @@
       function customFocus() {
         const modalElement = document.getElementById('cancelEnrollment');
         modalElement.addEventListener('shown.bs.modal', function (event) {
-          event.target.setAttribute('role', 'presentation');
           document.getElementById('cancelEnrollmentMsg').focus();
         });
 
         modalElement.addEventListener('hidden.bs.modal', function (event) {
-          event.target.setAttribute('role', 'dialog');
         });
       }
       customFocus()
