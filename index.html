@@ -16,7 +16,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <span class="icon alert-icon"></span>
-              <span class="cancel-message" id="cancelEnrollmentMsg" tabindex="0">Are you sure you want to cancel this verification?</span>
+              <span class="cancel-message" id="cancelEnrollmentMsg">Are you sure you want to cancel this verification?</span>
             </div>
             <div class="modal-footer">
               <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification">No</button>
@@ -29,18 +29,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-      function customFocus() {
-        const modalElement = document.getElementById('cancelEnrollment');
-        modalElement.addEventListener('shown.bs.modal', function (event) {
-          event.target.removeAttribute('role');
-          document.getElementById('cancelEnrollmentMsg').focus();
-        });
+      // function customFocus() {
+      //   const modalElement = document.getElementById('cancelEnrollment');
+      //   modalElement.addEventListener('shown.bs.modal', function (event) {
+      //     event.target.removeAttribute('role');
+      //     document.getElementById('cancelEnrollmentMsg').focus();
+      //   });
 
-        modalElement.addEventListener('hidden.bs.modal', function (event) {
-          // event.target.setAttribute('role', 'dialog');
-        });
-      }
-      customFocus()
+      //   modalElement.addEventListener('hidden.bs.modal', function (event) {
+      //   });
+      // }
+      // customFocus()
     </script>
   </body>
 </html>
