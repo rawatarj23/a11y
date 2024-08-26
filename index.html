@@ -8,72 +8,39 @@
   </head>
   <body>
     <section class="container">
-      <button type="button" class="btn btn-secondary btn-cancel btn-sm my-2 cancel-autocaptureBtn" aria-label="Close scan button, Cancel the Face capture" data-bs-toggle="modal" data-bs-target="#cancelEnrollment" tabindex="0" onclick="cancelFacecapture()">Close scan</button>
+      <button type="button" class="btn btn-secondary btn-cancel btn-sm my-2 cancel-autocaptureBtn" aria-label="Close scan button, Cancel the Face capture" data-bs-toggle="modal" data-bs-target="#cancelEnrollment">Close scan</button>
 
 
-      <div class="modal fade" id="cancelEnrollment" tabindex="-1" role="alertdialog" data-bs-backdrop="static" aria-hidden="true" data-bs-keyboard="false">
+      <dialog class="modal fade" id="cancelEnrollment" tabindex="-1" data-bs-backdrop="static" aria-hidden="true" data-bs-keyboard="false">
         <div class="modal-dialog custom-modal modal-dialog-centered modal-md">
-          <div class="modal-content" role="document">
+          <div class="modal-content">
             <div class="modal-body">
               <span class="icon alert-icon"></span>
-              <p class="cancel-message" id="cancelEnrollmentMsg">Are you sure you want to cancel this verification?</p>
+              <span class="cancel-message" id="cancelEnrollmentMsg" tabindex="03">Are you sure you want to cancel this verification?</span>
             </div>
             <div class="modal-footer">
-              <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification" tabindex="0">No</button>
-              <button type="button" id="yes" class="btn btn-secondary ms-3" aria-label="Yes, Cancel Verification" tabindex="0">Yes</button>
+              <button type="button" id="no" class="btn btn-primary" data-bs-dismiss="modal" aria-label="No, Continue with Verification">No</button>
+              <button type="button" id="yes" class="btn btn-secondary ms-3" aria-label="Yes, Cancel Verification" data-bs-dismiss="modal">Yes</button>
             </div>
           </div>
         </div>
-      </div>
+      </dialog>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-      // Function to trap focus inside the popup
-      function trapFocus(popup) {
-        const firstFocusableElement = document.getElementById('no')
-        const lastFocusableElement = document.getElementById('yes')
-        popup.addEventListener('keydown', function (event) {
-          const isTabPressed = event.key === 'Tab' || event.keyCode === 9
-          if (!isTabPressed) { return }
-          if (event.shiftKey) { // Shift + Tab
-            if (document.activeElement === firstFocusableElement) {
-              lastFocusableElement.focus()
-              event.preventDefault()
-            }
-          } else { // Tab
-            if (document.activeElement === lastFocusableElement) {
-              firstFocusableElement.focus()
-              event.preventDefault()
-            }
-          }
-        })
-      }
-      function cancelFacecapture() {
-        $('#cancelEnrollment').addClass('show').attr('tabindex', '0').focus()
-        $('.cancel-autocaptureBtn').attr('tabindex', '-1')
-        // put focus on no button when popup is open
-        const popup = document.getElementById('cancelEnrollment')
-        trapFocus(popup)
-        if (document.fullscreenElement) {
-          document.exitFullscreen()
-        }
-        $('#yes').off().on('click', function () {
-          $('#cancelEnrollment').removeClass('show')
-          console.log('yes clicked')
-          // move focus to cancel scan button when focus is closed
-          const popup = document.getElementById('cancelEnrollment')
-          trapFocus(popup)
-          $('.modal-backdrop').remove()
-        })
+      function customFocus() {
+        const modalElement = document.getElementById('cancelEnrollment');
+        modalElement.addEventListener('shown.bs.modal', function (event) {
+          event.target.setAttribute('role', 'presentation');
+          document.getElementById('cancelEnrollmentMsg').focus();
+        });
 
-        $("#no").off().on('click', function () {
-          console.log('no clicked')
-          $('#cancelEnrollment').removeClass('show')
-          $('.cancel-autocaptureBtn').attr('tabindex', '0').focus()
-        })
+        modalElement.addEventListener('hidden.bs.modal', function (event) {
+          event.target.setAttribute('role', 'dialog');
+        });
       }
-
+      customFocus()
     </script>
   </body>
 </html>
